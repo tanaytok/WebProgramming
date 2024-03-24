@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        body {background-color:beige; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; margin:inherit}
+        form {padding:inherit; border:double; width:stretch; height:stretch;}
+    </style>
+    <title>Bil Bakalım!</title>
+</head>
+<body>
+    <marquee behavior="scroll" direction="left" scrollamount="15"><strong>🚗</strong></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="15"><strong>🚗</strong></marquee>
+    <h2>🔥Genel Kültür Testi🔥</h2>
+    <form method="post">
+        <div id="1">
+            <label><strong>1) "Fedailer Kalesi Alamut" kitabının yazarı kimdir?</strong></label>
+
+            <p><input type="radio" value="Vladimir Bartol" name="soru-1" />Vladimir Bartol</p>
+            <p><input type="radio" value="Merve Kılıç" name="soru-1" />Merve Kılıç</p>
+            <p><input type="radio" value="İbrahim Müteferrika" name="soru-1" />İbrahim Mütefferika</p>
+        </div>
+
+        @{
+            if (IsPost)
+            {
+                var selectAnswer = Request.Form["soru-1"];
+                var correctAnwer = "Vladimir Bartol";
+
+                if (selectAnswer == correctAnwer)
+                {
+                    <p>Doğru Cevap!</p>
+                }
+                else
+                {
+                    <p>Yanlış Cevap!</p>
+                }
+            }
+        }
+        <div id="2">
+            <label><strong>2) “Raskolnikov “ hangi eserin baş karakteridir?</strong></label>
+            <p><input type="radio" value="Ölü Canlar" name="soru-2" />Ölü Canlar</p>
+            <p><input type="radio" value="Suç ve Ceza" name="soru-2" />Suç ve Ceza</p>
+            <p><input type="radio" value="Karmazov Kardeşler" name="soru-2" />Karmazov Kardeşler</p>
+        </div>
+
+        @{
+            if (IsPost)
+            {
+                var selectAnswer1 = Request.Form["soru-2"];
+                var correctAnswer1 = "Suç ve Ceza";
+
+                if (selectAnswer1 == correctAnswer1)
+                {
+                    <p>Doğru Cevap!</p>
+                }
+                else
+                {
+                    <p>Yanlış Cevap!</p>
+                }
+            }
+        }
+        <div id="3">
+            <label><strong>3) “Piedra ırmağının kıyısında oturdum ağladım” kitabının yazarı kimdir?</strong></label>
+            <p><input type="radio" value="Paulo Coelho" name="soru-3" />Paulo Coelho</p>
+            <p><input type="radio" value="Eric Ramirez" name="soru-3" />Eric Ramizrez</p>
+            <p><input type="radio" value="Joanna Lopez" name="soru-3" />Joanna Lopez</p>
+        </div>
+
+        @{
+            if (IsPost)
+            {
+                var selectAnswer2 = Request.Form["soru-3"];
+                var correctAnswer2 = "Paulo Coelho";
+
+                if (selectAnswer2 == correctAnswer2)
+                {
+                    <p>Doğru Cevap!</p>
+                }
+                else
+                {
+                    <p>Yanlış Cevap!</p>
+                }
+            }
+        }
+
+        <div id="4">
+            <label><strong>4) “listen to your heart” parçasının seslendiren grubun adı nedir?</strong></label>
+
+            <p><input type="radio" value="Roxette" name="soru-4" />Roxette</p>
+            <p><input type="radio" value="Queen" name="soru-4" />Queen</p>
+            <p><input type="radio" value="The Beatles" />The Beatles</p>
+        </div>
+
+        @{
+            if (IsPost)
+            {
+                var selectAnswer3 = Request.Form["soru-4"];
+                var correctAnswer3 = "Roxette";
+
+                if (selectAnswer3 == correctAnswer3)
+                {
+                    <p>Doğru Cevap!</p>
+                }
+                else
+                {
+                    <p>Yanlış Cevap!</p>
+                }
+            }
+        }
+        <div id="5">
+            <label><strong>5) “Babil’in Üzerine Gece Çöküyor” kitabındaki ana karakter kimdir?</strong></label>
+
+            <p><input type="radio" value="Büyük İskender" name="soru-5" />Büyük İskender</p>
+            <p><input type="radio" value="Hammurabi" name="soru-5" />Hammurabi</p>
+            <p><input type="radio" value="Hannibal" name="soru-5" />Hannibal</p>
+        </div>
+
+        @{
+            if (IsPost)
+            {
+                var selectAnswer4 = Request.Form["soru-5"];
+                var correctAnswer4 = "Büyük İskender";
+
+                if (selectAnswer4 == correctAnswer4)
+                {
+                    <p>Doğru Cevap!</p>
+                }
+                else
+                {
+                    <p>Yanlış Cevap!</p>
+                }
+            }
+        }
+
+        <input type="submit" value="Tıkla" />
+    </form>
+</body>
+</html>
