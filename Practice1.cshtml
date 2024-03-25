@@ -1,0 +1,306 @@
+﻿@{
+
+    <h2>Karmançorman Random Bullshit Go sistemine hoşgeldiniz!</h2>
+
+    for (var i = 0; i < 20; i++)
+    {
+        for (var j = 0; j < i; j++)
+        {
+            Console.Write("*");
+        }
+        Console.WriteLine();
+    }
+}
+
+@{
+    <h3>------------------------------------------------------------</h3>
+    var bolumkodları = new Dictionary<string, int>();
+
+    bolumkodları.Add("Yazılım Mühendisliği", 1);
+    bolumkodları.Add("Psikolloji", 2);
+    bolumkodları.Add("Kimya", 3);
+
+    foreach (var kodlar in bolumkodları)
+    {
+        <p>Bölüm ve kodlar: @kodlar</p>
+    }
+    <h3>-------------------------------------------------------------</h3>
+
+}
+
+
+@{
+    string[] attendence = { "Tan ", "Merve ", "İlkim ", "Hakan " };
+
+    string[] notattendence = { "Yasin", "Bozok", "Mustafa", "Ryan Gosling" };
+
+    foreach (var sorumsuz in notattendence)
+    {
+        <em><p>Sorumsuz Herif -----> @sorumsuz</p></em>
+    }
+
+    <h3>Sınava Giren Öğrenciler</h3>
+
+    <table border="1">
+        <tr>
+            <td>İsim</td>
+            <td>Bolum Kodu</td>
+            <td>Midterm</td>
+            <td>Final</td>
+            <td>Ortalama</td>
+        </tr>
+        <tr>
+            <td>Tan</td>
+            <td>1</td>
+            <td>45</td>
+            <td>88</td>
+            <td>70</td>
+        </tr>
+        <tr>
+            <td>Merve</td>
+            <td>2</td>
+            <td>92</td>
+            <td>100</td>
+            <td>96</td>
+        </tr>
+        <tr>
+            <td>İlkim</td>
+            <td>3</td>
+            <td>77</td>
+            <td>71</td>
+            <td>72</td>
+        </tr>
+        <tr>
+            <td>Hakan</td>
+            <td>1</td>
+            <td>32</td>
+            <td>11</td>
+            <td>18</td>
+        </tr>
+    </table>
+
+    <h3>Sınava Girmeyen Öğrenciler</h3>
+    <table border="1">
+        <tr>
+            <td>İsim</td>
+            <td>Bolum Kodu</td>
+        </tr>
+        <tr>
+            <td>Yasin</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Bozok</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Mustafa</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Ryan Gosling</td>
+            <td>3</td>
+        </tr>
+    </table>
+}
+
+@{
+    float average;
+    var averageMessage = "";
+
+    if (IsPost)
+    {
+        var midterm = Request.Form["text1"];
+        var final = Request.Form["text2"];
+
+        average = (midterm.AsInt() * 40 / 100) + (final.AsInt() * 60 / 100);
+        averageMessage = "Average: " + average;
+
+        if (average < 50)
+        {
+            averageMessage = "Average: " + average + " \nFailed!";
+        }
+        else
+        {
+            averageMessage = "Average: " + average + " \nPassed!";
+        }
+    }
+}
+
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <style>
+        body {
+            background-color: beige;
+            font-family: Algerian;
+            margin: auto;
+        }
+
+        form {
+            padding: inherit;
+            border-style: double;
+            width: auto;
+            height: auto;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 100px solid transparent;
+            position: relative;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            background-color: yellow;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .square {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            display: inline-block
+        }
+
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin-right: 10px;
+            display: inline-block;
+            border-radius: 50px;
+        }
+    </style>
+    <title>PRACTICE</title>
+</head>
+<body>
+
+    <form action="" method="post">
+        <p>Enter midterm and final scores. Then click <strong> Calculate!</strong></p>
+
+        <p>
+            <label for="tex1">Midterm:</label>
+            <input type="text" name="text1" />
+        </p>
+        <p>
+            <label for="text2">Final:</label>
+            <input type="text" name="text2" />
+        </p>
+        <p>
+            <input type="submit" value="Calculate!" />
+        </p>
+    </form>
+    <p>@averageMessage</p>
+    <form method="post" action="~/practice1sikayet.cshtml">
+        <h3>Sorun Bildir!</h3>
+        <div>
+            Your name:
+            <input type="text" name="ad" />
+        </div>
+        <div>
+            Your email:
+            <input type="text" name="email" />
+        </div>
+        <div>
+            Details about your problem: <br />
+            <textarea name="sikayet" cols="45" rows="4"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Submit" />
+        </div>
+    </form>
+    <form method="post">
+        <h3>Havali sekiller :D</h3>
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="triangle"></div>
+        }
+        @for (int i = 0; i < 5; i++)
+        {
+            <div class="square"></div>
+        }
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="circle"></div>
+        }
+
+        <marquee behavior="scroll" direction="right" scrollamount="5"><h3>HAVALİ</h3></marquee>
+        <marquee behavior="scroll" direction="left" scrollamount="5"><h3>SEKİLLER</h3></marquee>
+    </form>
+
+    <form method="post">
+        <h2>🔥Genel Kültür Testi🔥</h2>
+        <div id="1">
+            <label><strong>1) Aşağıdakilerden hangisi dinamik bir programlama dilidir?</strong></label>
+
+            <p><input type="radio" value="Python" name="soru-1" />Python</p>
+            <p><input type="radio" value="C++" name="soru-1" />C++</p>
+            <p><input type="radio" value="Java" name="soru-1" />Java</p>
+        </div>
+        @{ 
+            if (IsPost)
+            {
+                var selectAnswer = Request.Form["soru-1"];
+                var correctAnswer = "Python";
+
+                if (selectAnswer == correctAnswer)
+                {
+                    <p>HELAL OLSUN</p>
+                }
+                else
+                {
+                    <p>Yanlış Cevap!</p>
+                }
+            }
+        }
+
+        <div id="2">
+            <label><strong>2) Web programlama dersini hangi öğretim üyesi veriyor?</strong></label>
+
+            <p><input type="radio" value="Emma Stone" name="soru-2" />Emma Stone</p>
+            <p><input type="radio" value="Hope Stone" name="soru-2" />Hope Stone</p>
+            <p><input type="radio" value="Ahmet Kaya" name="soru-2" />Ahmet Kaya</p>
+        </div>
+        @{ 
+            var selectAnswer1 = Request.Form["soru-2"];
+            var correctAnswer1 = "Hope Stone";
+
+            if(selectAnswer1 == correctAnswer1)
+            {
+                <p>BRAVOOOO</p>
+            }
+            else
+            {
+                <p>Yanlış Cevap!</p>
+            }
+        }
+
+        <div id="3">
+            <label><strong>3) En iyi motosiklet markası hangisi?</strong></label>
+
+            <p><input type="radio" value="Honda" name="soru-3" />Honda</p>
+            <p><input type="radio" value="Bajaj" name="soru-3" />Bajaj</p>
+            <p><input type="radio" value="Yamaha" name="soru-3" />Yamaha</p>
+        </div>
+        @{ 
+            var selectAnswer2 = Request.Form["soru-3"];
+            var correctAnswer2 = "Bajaj";
+
+            if (selectAnswer2 == correctAnswer2)
+            {
+                <p>SEN BU İŞİ BİLİYORSUN</p>
+            }
+            else
+            {
+                <p>TOY ÇIKTIN.</p>
+            }
+
+            <input type="submit" value="Submit" />
+        }
+    </form>
+</body>
+</html>

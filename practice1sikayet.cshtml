@@ -1,0 +1,56 @@
+﻿@{
+    var ad = Request.Form["ad"];
+    var email = Request.Form["email"];
+    var sikayet = Request.Form["sikayet"];
+    var errMessage = "";
+    var debuggingFlag1 = false;
+
+    try
+    {
+        WebMail.SmtpServer = "your-STMP-server";
+        WebMail.SmtpPort = 25;
+        WebMail.UserName = "tanaytok";
+        WebMail.Password = "123123";
+        WebMail.From = "tanaytok@hotmail.com";
+
+        WebMail.Send(to: email, subject: "Hel request from -" + ad, body: sikayet);
+    }
+    catch (Exception ex)
+    {
+        errMessage = ex.Message;
+    }
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Request for Assistance</title>
+</head>
+<body>
+    <p>
+        Sorry to hear that you are having trouble, <b>@ad</b>.
+    </p>
+    @if (errMessage == "")
+    {
+        <p>An email message has been sent to our customer service department regarding the following problem:</p>
+        <p><b>@sikayet</b></p>
+    }
+    else
+    {
+        <p><b>The email was <em>not</em> sent.</b></p>
+        <p>
+            Please check that the code in the ProcessRequest page has
+            correct setting for the SMTP server name, a user name, a password and a "from" adress.
+        </p>
+
+        if (debuggingFlag1)
+        {
+            <p>The following error was reported:</p>
+            <p><em>@errMessage</em></p>
+        }
+
+    }
+</body>
+</html>
